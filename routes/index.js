@@ -12,4 +12,6 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
+router.use('/signin',require('./singin'));
+
 module.exports = router;
