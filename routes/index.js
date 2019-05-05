@@ -8,6 +8,7 @@ let s3 = new AWS.S3();
 
 
 /* GET home page. */
+router.use('./worldcup',require('./worldcup/index'));
 router.use('/main',require('./main/index'));
 router.use('/signin',require('./singin'));
 router.use('/signup',require('./signup'));

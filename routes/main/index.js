@@ -9,7 +9,6 @@ const csv = require('csvtojson');
 const readCsv = (fileName)=>{
     return new Promise((resolve, reject)=>{
         csv().fromFile(fileName).then((jsonObj)=>{
-          console.log(jsonObj);
             if(jsonObj != null){
                 resolve(jsonObj)
             }else{
@@ -22,28 +21,37 @@ const readCsv = (fileName)=>{
 /* GET home page. */
 router.get('/', async(req,res)=>{
   readCsv('toyList.csv').then(obj=>{
-    let array = new Array();
+    let data = new Array();
     for(let i=0; i<obj.length;i++){
-      path = bucket+'/'+obj[i].category+'/'+obj[i].index;
-      array.push(path);
+        path = bucket+'/'+obj[i].category+'/'+obj[i].index+'.jpg';
+        let temp={
+          path : path,
+          item_name : obj[i].name,
+        }
+        data.push(temp);
+      
     }
   
-    res.status(200).send(util.successTrue(statusCode.OK,resMessage.READ_SUCCESS,array));
+    res.status(200).send(util.successTrue(statusCode.OK,resMessage.READ_SUCCESS,data));
   })
 });
 
 router.get('/:temp_category',(req,res)=>{
+
   readCsv('toyList.csv').then(obj=>{
-    let array = new Array();
+    let data = new Array();
     for(let i=0; i<obj.length;i++){
       if(req.params.temp_category == obj[i].category){
-        path = bucket+'/'+obj[i].category+'/'+obj[i].index;
-        array.push(path);
+        path = bucket+'/'+obj[i].category+'/'+obj[i].index+'.jpg';
+        let temp={
+          path : path,
+          item_name : obj[i].name,
+        }
+        data.push(temp);
       }
     }
-    res.status(200).send(util.successTrue(statusCode.OK,resMessage.READ_SUCCESS,array));
+    res.status(200).send(util.successTrue(statusCode.OK,resMessage.READ_SUCCESS,data));
   })
 });
 
 module.exports = router;
-
