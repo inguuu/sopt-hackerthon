@@ -18,4 +18,6 @@ module.exports = {
 
     USER_SELECT_SUCCESS: "유저 조회 성공",
     NO_USER: "존재하지 않는 학생입니다",
+
+
 };
