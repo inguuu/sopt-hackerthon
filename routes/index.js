@@ -8,7 +8,8 @@ let s3 = new AWS.S3();
 
 
 /* GET home page. */
-router.use('/signin',require('./signin'));
+router.use('/main',require('./main/index'));
+router.use('/signin',require('./singin'));
 router.use('/signup',require('./signup'));
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });

@@ -21,7 +21,7 @@ const readCsv = (fileName)=>{
 
 router.get('/', async (req,res)=>{
     
-    readCsv('csv/users.csv').then(csvData=>{
+    readCsv('users.csv').then(csvData=>{
         console.log(csvData)
         let id_check =false;
         let pw_check =false;
@@ -35,7 +35,6 @@ router.get('/', async (req,res)=>{
             user_id : req.body.user_id,
         }
         if(id_check == true && pw_check== true){
-            console.log('hrer2')
             res.status(200).send(util.successTrue(statusCode.OK,resMessage.LOGIN_SUCESS,data));
         }else{
 

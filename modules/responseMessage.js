@@ -14,6 +14,7 @@ module.exports = {
     SAVE_SUCCESS: "데이터 저장 성공",
     SAVE_FAIL: "데이터 저장 실패",
     READ_FAIL: "데이터 저장 실패",
+    READ_SUCCESS: "데이터 읽기 성공",
 
     USER_SELECT_SUCCESS: "유저 조회 성공",
     NO_USER: "존재하지 않는 학생입니다",
